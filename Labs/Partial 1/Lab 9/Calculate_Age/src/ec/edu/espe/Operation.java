@@ -38,7 +38,6 @@ public class Operation {
         return cont;
     }
     
-    
     public int multi(int operand1, int operand2){
         int acum=0;
         int cont=0;
@@ -54,5 +53,4 @@ public class Operation {
         if(check) return -acum;
         else return acum;
     }
-    
 }
