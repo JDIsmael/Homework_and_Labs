@@ -6,6 +6,7 @@
 package ec.edu.espe;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -14,11 +15,10 @@ import java.io.IOException;
  * @author JDIsmael
  */
 public class FileRdr {
-    public void ReaderFile(){
+    public void ReaderFile(File file){
                 String line = "";
         try{
-            BufferedReader reader = new BufferedReader(
-                    new FileReader("/Users/jdtysic/Desktop/prueba.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             while(line != null){
                 System.out.println(line);
                 line = reader.readLine();

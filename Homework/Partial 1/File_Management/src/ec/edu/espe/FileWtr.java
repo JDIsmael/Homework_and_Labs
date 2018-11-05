@@ -6,6 +6,7 @@
 package ec.edu.espe;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,12 +18,12 @@ import java.util.Scanner;
 public class FileWtr {
    Scanner in = new Scanner(System.in);
    String inString;
-    public void WriterFile(){
+    public void WriterFile(File file){
         
         try{
             
             BufferedWriter buffWriter = new BufferedWriter(
-                    new FileWriter("/Users/jdtysic/Desktop/prueba.txt", true));
+                    new FileWriter(file, true));
             System.out.println("Ingrese el texto que se ingresara en el archivo");
             inString = in.nextLine();
             buffWriter.newLine();

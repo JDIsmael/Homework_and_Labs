@@ -5,6 +5,8 @@
  */
 package ec.edu.espe;
 
+import java.io.File;
+
 /**
  *
  * @author JDIsmael
@@ -12,11 +14,13 @@ package ec.edu.espe;
 public class File_Management {
 
     public static void main(String[] args) {
+        File file = new File("prueba.txt");
+        
         FileRdr reader = new FileRdr();
         FileWtr writer = new FileWtr();
         
-        writer.WriterFile();
-        reader.ReaderFile();
+        writer.WriterFile(file);
+        reader.ReaderFile(file);
         /*FindString find=new FindString();
         find.FindStg();*/
     }
