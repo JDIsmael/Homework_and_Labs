@@ -15,18 +15,19 @@ public class Main {
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int day,month,year;
+        int inDay,inMonth,inYear;
         
-       System.out.println("Ingrese el dia de nacimiento");
-        day = in.nextInt();
+       /*System.out.println("Ingrese el dia de nacimiento");
+        inDay = in.nextInt();
         System.out.println("Ingrese el mes de nacimiento");
-        month = in.nextInt();
+        inMonth = in.nextInt();
         System.out.println("Ingrese el year de nacimiento");
-        year = in.nextInt();
+        inYear = in.nextInt();*/
         
-       Person person = new Person(day, month, year);
-        person.calculateAge();
-        System.out.println("Usted tiene " + person.getAge() + " años");
+        Person person = new Person();
+        //person.calculateAge(inDay, inMonth, inYear);
+        //System.out.println("Usted tiene " + person.getAge() + " años");
+        person.calculateMonth(05, 10, 1996);
         
         
     }
