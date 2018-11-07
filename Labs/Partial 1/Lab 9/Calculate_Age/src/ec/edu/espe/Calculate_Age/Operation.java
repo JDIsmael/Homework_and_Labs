@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe;
+package ec.edu.espe.Calculate_Age;
 
 /**
  *
@@ -12,6 +12,13 @@ package ec.edu.espe;
 public class Operation {
     
     int result;
+
+    public Operation() {
+    }
+
+    public Operation(int result) {
+        this.result = result;
+    }
     
     public int add(int operand1, int operand2){
         result=0;
