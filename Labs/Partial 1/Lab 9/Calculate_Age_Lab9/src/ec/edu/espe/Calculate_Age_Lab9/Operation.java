@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.Calculate_Age;
+package ec.edu.espe.Calculate_Age_Lab9;
 
 /**
- *
  * @author JDIsmael
  */
 public class Operation {
@@ -27,9 +26,7 @@ public class Operation {
     }
     
     public int sub(int operand1, int operand2){
-        result=0;
-        result = add(operand1, -(operand2));
-        return result;
+        return add(operand1, -(operand2));
     }
     
     public int div(int operand1, int operand2){
