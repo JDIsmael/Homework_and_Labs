@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.Calculate_Age_Lab9;
+package ec.edu.espe.calculate_age_lab10;
 
 import java.util.Calendar;
 
@@ -42,6 +42,8 @@ public class Person {
         
         if((operation.sub(cal.get(Calendar.MONTH) + 1, inMonth) <= 0) 
                 && (inDay >= 30))
+            inMonth++;
+        if(inDay >= 30)
             inMonth++;
             
         monthLife = operation.sub(cal.get(Calendar.MONTH) + 1, inMonth);

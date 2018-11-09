@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.Calculate_Age_Lab9;
+package ec.edu.espe.calculate_age_lab10;
 
+import ec.edu.espe.file_management.util.File_Management;
+import java.io.File;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -17,16 +19,23 @@ public class Main {
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        Calendar cal = new GregorianCalendar();
+        File_Management fileMan = new File_Management();
+        File file = new File("Register_Age.txt");
+        
+        String name, inString;
         int inDay = 0, inMonth = 0, inYear = 0;
         boolean check = false;
-        Calendar cal = new GregorianCalendar();
+        
+        System.out.print("Ingresa el nombre: ");
+        name = in.nextLine();
         
         while (!check){
-            System.out.println("Ingrese el dia de nacimiento");
+            System.out.print("Ingrese el dia de nacimiento: ");
             inDay = in.nextInt();
-            System.out.println("Ingrese el mes de nacimiento");
+            System.out.print("Ingrese el mes de nacimiento: ");
             inMonth = in.nextInt();
-            System.out.println("Ingrese el año de nacimiento");
+            System.out.print("Ingrese el año de nacimiento: ");
             inYear = in.nextInt();
 
             if (inDay<0 || inDay>31){
@@ -61,7 +70,15 @@ public class Main {
         System.out.println("*** USTED TIENE ***\n"
                 + person.getAge() + " años "
                         + person.getMonthLife() + " meses "
-                                + person.getDayLife() +" dias");  
+                                + person.getDayLife() +" dias"); 
+        
+        inString = "("+ name + ") " + person.getAge() + ", " 
+                + person.getMonthLife() + ", " + person.getDayLife();
+        
+        fileMan.WriterFile(file, inString);
+        fileMan.ReaderFile(file);
+        
+        
     }
    
 }
