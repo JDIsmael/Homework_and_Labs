@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
  * @author JDIsmael
  */
 public class File_Management {

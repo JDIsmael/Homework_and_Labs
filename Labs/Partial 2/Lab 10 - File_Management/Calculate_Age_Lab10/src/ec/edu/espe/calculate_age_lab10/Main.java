@@ -12,7 +12,6 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /**
- *
  * @author JDIsmael
  */
 public class Main {
@@ -21,21 +20,22 @@ public class Main {
         Scanner in = new Scanner(System.in);
         Calendar cal = new GregorianCalendar();
         File_Management fileMan = new File_Management();
-        File file = new File("Register_Age.txt");
+        File file = new File("Register_Age.csv");
         
         String name, inString;
         int inDay = 0, inMonth = 0, inYear = 0;
         boolean check = false;
-        
-        System.out.print("Ingresa el nombre: ");
+        System.out.println("*********************");
+        System.out.println("* Ingresa el nombre * ");
+        System.out.println("*********************");
         name = in.nextLine();
         
         while (!check){
-            System.out.print("Ingrese el dia de nacimiento: ");
+            System.out.print("* Ingrese el dia de nacimiento: ");
             inDay = in.nextInt();
-            System.out.print("Ingrese el mes de nacimiento: ");
+            System.out.print("* Ingrese el mes de nacimiento: ");
             inMonth = in.nextInt();
-            System.out.print("Ingrese el año de nacimiento: ");
+            System.out.print("* Ingrese el año de nacimiento: ");
             inYear = in.nextInt();
 
             if (inDay<0 || inDay>31){
@@ -72,10 +72,11 @@ public class Main {
                         + person.getMonthLife() + " meses "
                                 + person.getDayLife() +" dias"); 
         
-        inString = "("+ name + ") " + person.getAge() + ", " 
+        inString = "("+ name + "), " + person.getAge() + ", " 
                 + person.getMonthLife() + ", " + person.getDayLife();
         
         fileMan.WriterFile(file, inString);
+        System.out.println("*** Registro ***");
         fileMan.ReaderFile(file);
         
         
