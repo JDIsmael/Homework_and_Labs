@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.calculate_age_hw10;
 
+import ec.edu.espe.file_management.util.Validation;
 import java.util.Calendar;
 
 /*
@@ -27,8 +28,21 @@ public class Person {
         
         dayLife=operation.sub(cal.get(Calendar.DAY_OF_MONTH), inDay);
         
-        if(dayLife < 0)
-            dayLife=dayLife+30;               
+        if(Validation.dayInMonth){
+            dayLife=dayLife+30; 
+            if(dayLife >= 30){
+                dayLife = operation.sub(dayLife, 30);
+                monthLife++;
+            }
+        }else{
+            dayLife=dayLife+31; 
+            if(dayLife >= 31){
+                dayLife = operation.sub(dayLife, 31);
+                monthLife++;
+            }
+                
+        }
+           
     }
     
     public void calculateMonth(int inDay, int inMonth, int inYear){
@@ -46,10 +60,10 @@ public class Person {
             
         monthLife = operation.sub(cal.get(Calendar.MONTH) + 1, inMonth);
         
-        if (dayLife>cal.get(Calendar.DAY_OF_MONTH)) 
+        if (dayLife>=cal.get(Calendar.DAY_OF_MONTH)) 
             monthLife=monthLife-1;
          
-        if(monthLife <= 0)
+        if(monthLife < 0)
             monthLife = operation.add(12, monthLife);
         
     }

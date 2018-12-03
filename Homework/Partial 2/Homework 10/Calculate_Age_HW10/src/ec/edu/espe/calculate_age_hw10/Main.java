@@ -6,6 +6,7 @@
 package ec.edu.espe.calculate_age_hw10;
 
 import ec.edu.espe.file_management.util.File_Management;
+import ec.edu.espe.file_management.util.Validation;
 import java.io.File;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -126,43 +127,42 @@ public class Main {
     }
    
     public static String askForData(){
-        boolean check = false;
+        String input = ""; 
+        
         in.nextLine();        
         System.out.println("*********************");
         System.out.println("* Ingresa el nombre * ");
         System.out.println("*********************");
         name = in.nextLine();
         
-        while (!check){
-            System.out.print("* Ingrese el dia de nacimiento: ");
-            inDay = in.nextInt();
-            System.out.print("* Ingrese el mes de nacimiento: ");
-            inMonth = in.nextInt();
-            System.out.print("* Ingrese el año de nacimiento: ");
-            inYear = in.nextInt();
-
-            if (inDay<0 || inDay>31){
-                System.out.println("Ha ingresado mal el dia");
-                check = true;
-            }
-            if (inMonth<0 || inMonth>30){
-                System.out.println("Ha ingresado mal el mes");
-                check = true;
-            }
-            if (inYear < 0|| inYear > cal.get(Calendar.YEAR)){
-                System.out.println("Ha ingresado mal el año");
-                check = true;
-            }
-            if(inYear >= cal.get(Calendar.YEAR) 
-                    && inMonth >= cal.get(Calendar.MONTH) 
-                    && inDay >= cal.get(Calendar.DAY_OF_MONTH)){
-                System.out.println("Todavia no nace compita!!");
-                check = true;
-            }
+        do{
             
-            if(check) check = false;
-            else check = true;
-        }
+            do{
+                do{
+                    System.out.print("\n* Ingrese el año de nacimiento: ");
+                    input = in.nextLine();
+                }while(Validation.onlyDigit(input));
+                inYear = Integer.parseInt(input);
+            }while(Validation.checkYear(inYear));
+            
+            do{
+                do{
+                    System.out.print("\n* Ingrese el mes de nacimiento: ");
+                    input = in.nextLine();
+                }while(Validation.onlyDigit(input));
+                inMonth = Integer.parseInt(input);
+            }while(Validation.cheackMonth(inMonth));
+            
+            do{
+                do{
+                    System.out.print("\n* Ingrese el dia de nacimiento: ");
+                    input = in.nextLine();
+                }while(Validation.onlyDigit(input));
+                inDay = Integer.parseInt(input);
+            }while(Validation.checkDay(inDay, inMonth, inYear));
+            
+        }while(Validation.checkBirth(inDay, inMonth, inYear));
+        
         person.calculateDay(inDay, inMonth, inYear);
         person.calculateMonth(inDay, inMonth, inYear);
         person.calculateAge(inDay, inMonth, inYear);
