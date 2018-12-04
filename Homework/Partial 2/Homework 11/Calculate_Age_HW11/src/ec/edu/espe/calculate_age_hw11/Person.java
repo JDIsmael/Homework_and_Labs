@@ -70,6 +70,15 @@ public class Person {
     
     //Contructor
     
+    public Person(int dayLife, int monthLife, int age) {
+        this.dayLife = dayLife;
+        this.monthLife = monthLife;
+        this.age = age;
+        
+        operation = new Operation();
+        cal = Calendar.getInstance(); 
+    }
+
     public Person() {
         operation = new Operation();
         cal = Calendar.getInstance(); 
