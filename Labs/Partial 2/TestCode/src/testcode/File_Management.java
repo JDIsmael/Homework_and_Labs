@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author JDIsmael
@@ -19,13 +20,12 @@ import java.util.ArrayList;
 public class File_Management {
     
     
-    public void writerFile(File file, String inString){
+    public static void writerFile(File file, String inString){
         try{
             
             BufferedWriter buffWriter = new BufferedWriter(
                     new FileWriter(file, true));
             buffWriter.write(inString);
-            buffWriter.newLine();
             buffWriter.close();
             
         }catch(IOException e){
@@ -67,32 +67,7 @@ public class File_Management {
     
     
     public void modifyFile(File file, String name, String inString, boolean check){
-        ArrayList<String> line = new ArrayList<String>();
-        line = reader(file);
         
-        if(check){
-            for (int i = 0; i < line.size()-1; i++)
-                if(line.get(i).contains(name))
-                    line.set(i, inString);
-        }else{
-            for (int i = 0; i < line.size()-1; i++)
-                if(line.get(i).contains(name))
-                    line.remove(i);
-        }  
-        try{
-            
-            BufferedWriter buffWriter = new BufferedWriter(
-                    new FileWriter(file));
-            for(int i = 1; i < line.size()-1; i++){
-                buffWriter.write(line.get(i));
-                buffWriter.newLine();
-            }
-            buffWriter.close();
-            
-        }catch(IOException e){
-            System.out.println("No se encontro el archivo o"
-                    + " ha ocurrido un error fatal :)");
-        }
     }
     
     public void deleteField(File file, String name){
@@ -103,4 +78,66 @@ public class File_Management {
         
     }
     
+    
+    
+    
+    public static void modificar(File fWork,String idString,String InputString)
+    {
+        File fOverride= new File("Override");
+        overrideFIle(fWork, fOverride);
+        BufferedReader br;
+        try
+        {
+                br = new BufferedReader(new FileReader(fOverride));
+                String linea;
+                while((linea=br.readLine()) != null)
+                {
+                    if(linea.contains(idString))
+                    {
+                        writerFile(fWork,InputString+"\n");
+
+                    }
+                    else
+                    {
+                        writerFile(fWork,linea+"\n");
+                    }
+                }
+                br.close();
+                
+            
+
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        fOverride.delete();
+    }
+  
+    public static void overrideFIle(File fWork,File fOverride){ 
+        BufferedReader br;
+        try
+        {
+            if(fWork.exists())
+            {
+                br = new BufferedReader(new FileReader(fWork));
+                String linea;
+                while((linea=br.readLine()) != null)
+                {
+                        writerFile(fOverride,linea+"\n");
+                }
+                br.close();
+            }
+            else
+            {
+                System.out.println("Fichero no Existe");
+            }
+            fWork.delete();
+
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
 }
