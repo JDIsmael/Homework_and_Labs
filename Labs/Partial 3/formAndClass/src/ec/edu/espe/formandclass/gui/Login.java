@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocation(450, 150);
         /*encripting("dario", "brocoli123",true);
         encripting("jefe", "qwerty123",true);
         encripting("bill", "datos123",true);
@@ -104,15 +105,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
-        if(encripting(txtUser.getText(), txtPass.getText().toString(), false)){
-            Home home = new Home();
-            home.setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Su contraseña y/o usuario son incorrectos"
-                    , "Error de Login", JOptionPane.ERROR_MESSAGE);
-        }
+        if(!txtUser.getText().trim().equals("") && !txtPass.getText().trim().equals(""))
+            if(encripting(txtUser.getText(), txtPass.getText().toString(), false)){
+                Home home = new Home(txtUser.getText());
+                home.setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Su contraseña y/o usuario son incorrectos"
+                        , "Error de Login", JOptionPane.ERROR_MESSAGE);
+            }
+        else
+            JOptionPane.showMessageDialog(this, "Ingrese Usuario y/o Contraseña"
+                        , "Error de Login", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public boolean encripting(String user, String pass, boolean check){
