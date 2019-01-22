@@ -30,7 +30,7 @@ public class Main {
 
     
     public static void main(String[] args) {
-       /* byte op;
+        byte op;
         do{
         System.out.println("*** Registro de Fechas ***");
         
@@ -68,12 +68,12 @@ public class Main {
                 System.out.println("\n\n\n\n\n\n\nCerrando sistema...\n* Hasta Pronto *");
                 break;
         }
-        }while(op != 6);*/
+        }while(op != 6);
         
         
     }
     
-    //Method for test
+    /*//Method for test
     
     public static int dayPerson(int inDay, int month, int inYear){
         Person age = new Person();
@@ -96,8 +96,8 @@ public class Main {
         age.calculateMonth(inDay, inMonth, inYear);
         age.calculateAge(inDay, inMonth, inYear);
         return age.getMonthLife();
-    }
-    /*
+    }*/
+    
     public static void read(boolean check){
         System.out.print("*** Registro ***");
         fileMan.readerFile(file);
@@ -187,12 +187,12 @@ public class Main {
             
         }while(Validation.checkBirth(inDay, inMonth, inYear));
         
-        person.calculateDay(inDay, inMonth, inYear);
-        person.calculateMonth(inDay, inMonth, inYear);
-        person.calculateAge(inDay, inMonth, inYear);
+        int age = person.calculateDay(inDay, inMonth, inYear);
+        int month =person.calculateMonth(inDay, inMonth, inYear);
+        int day = person.calculateAge(inDay, inMonth, inYear);
         
-        return "("+ name + "), " + person.getAge() + ", " 
-                + person.getMonthLife() + ", " + person.getDayLife();
+        return "("+ name + "), " + age + ", " 
+                + month + ", " + day;
     }
-*/
+
 }

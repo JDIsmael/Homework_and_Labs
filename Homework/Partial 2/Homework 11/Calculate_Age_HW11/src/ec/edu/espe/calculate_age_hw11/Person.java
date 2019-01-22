@@ -19,12 +19,13 @@ public class Person {
     private int inDay,inMonth,inYear,dayLife,monthLife;
     private int age;
 
-    public void calculateAge(int inDay, int inMonth, int inYear){
+    public int calculateAge(int inDay, int inMonth, int inYear){
         
-        age = operation.sub(cal.get(Calendar.YEAR),this.inYear);
+        age = operation.sub(cal.get(Calendar.YEAR),inYear);
+        return age;
     }
     
-    public void calculateDay(int inDay, int inMonth, int inYear){
+    public int calculateDay(int inDay, int inMonth, int inYear){
         
         dayLife=operation.sub(cal.get(Calendar.DAY_OF_MONTH), inDay);
         
@@ -42,10 +43,11 @@ public class Person {
             }
                 
         }
+        return dayLife;
            
     }
     
-    public void calculateMonth(int inDay, int inMonth, int inYear){
+    public int calculateMonth(int inDay, int inMonth, int inYear){
         
         if(inMonth >= (1 + cal.get(Calendar.MONTH)) 
                 && (inDay >= cal.get(Calendar.DAY_OF_MONTH))){
@@ -65,6 +67,8 @@ public class Person {
          
         if(monthLife < 0)
             monthLife = operation.add(12, monthLife);
+        
+        return monthLife;
         
     }
     
