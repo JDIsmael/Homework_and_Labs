@@ -52,10 +52,19 @@ System.out.println(encaja.find());
         prueba.imprimier();
         System.out.println("el contador es el mismo en prueba 2 que en Tescodey es: "+cont);**/
         
-        FileTest();
+       // FileTest();
+        System.out.println("number: " +onlyString("sdfuurihfw"));
     }
     
+    public static boolean onlyString(String digit){
+        Pattern patron = Pattern.compile("[^0-9]*");
+        return patron.matcher(digit).matches();
+    } 
     
+    public static boolean onlyDigit(String digit){
+        Pattern patron = Pattern.compile("^[0-9]+$");
+        return patron.matcher(digit).find();
+    }  
     
     public static void FileTest(){
         File_Management.writerFile(new File("Works.csv"), "Hola a todos\n");
